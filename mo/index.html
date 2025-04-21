@@ -1,0 +1,181 @@
+<!DOCTYPE html><html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>جامعة إقليم سبأ - إدارة الدرجات</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #4facfe, #00f2fe);
+            color: #fff;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            animation: fadeIn 1s ease-in;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        header {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+        }
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+            transition: color 0.3s;
+        }
+        nav ul li a:hover {
+            color: #ffeb3b;
+        }
+        button {
+            background: #ff6f61;
+            border: none;
+            padding: 10px 20px;
+            color: #fff;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.2s;
+        }
+        button:hover {
+            background: #ff3b30;
+            transform: scale(1.05);
+        }
+        .hidden {
+            display: none;
+        }
+        section {
+            margin: 50px auto;
+            max-width: 600px;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            animation: slideUp 0.7s ease-out;
+        }
+        @keyframes slideUp {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+            background: rgba(255, 255, 255, 0.3);
+        }
+        table, th, td {
+            border: 1px solid #fff;
+        }
+        th, td {
+            padding: 10px;
+            color: #fff;
+        }
+        .pdf-button {
+            margin-top: 15px;
+            background: #28a745;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>جامعة إقليم سبأ</h1>
+        <p>محمدن نصر علي</p>
+        <nav>
+            <ul>
+                <li><a href="#grades">إدارة الدرجات</a></li>
+                <li><a href="#additions">إدارة الإضافات</a></li>
+                <li><a href="#reports">إنشاء تقرير</a></li>
+                <li><a href="#contact">التواصل</a></li>
+            </ul>
+        </nav>
+    </header><section id="grades">
+    <h2>إدارة الدرجات</h2>
+    <button onclick="showGradeOptions()">إدخال الدرجات</button>
+    <button onclick="showSearchGrades()">البحث عن الدرجات</button>
+    
+    <div id="gradeForm" class="hidden">
+        <h3>إدخال الدرجات</h3>
+        <form id="gradeEntryForm">
+            <label for="student_id">رقم الطالب:</label>
+            <input type="text" id="student_id" required>
+            
+            <label for="student_name">اسم الطالب:</label>
+            <input type="text" id="student_name" required>
+            
+            <label for="department">القسم:</label>
+            <select id="department" required></select>
+            
+            <label for="level">المستوى:</label>
+            <select id="level" required></select>
+            
+            <label for="term">الترم:</label>
+            <select id="term" required></select>
+            
+            <div id="subjectsContainer"></div>
+            
+            <button type="submit">حفظ الدرجات</button>
+        </form>
+    </div>
+
+    <div id="gradesTable" class="hidden">
+        <h3>جدول الدرجات</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>رقم الطالب</th>
+                    <th>اسم الطالب</th>
+                    <th>القسم</th>
+                    <th>المستوى</th>
+                    <th>الترم</th>
+                    <th>المواد والدرجات</th>
+                    <th>تعديل</th>
+                    <th>حذف</th>
+                </tr>
+            </thead>
+            <tbody id="gradesBody">
+                <!-- يتم إدخال البيانات هنا ديناميكياً -->
+            </tbody>
+        </table>
+        <button class="pdf-button" onclick="downloadPDF()">حفظ كملف PDF</button>
+    </div>
+</section>
+
+<section id="contact">
+    <h2>التواصل</h2>
+    <p>البريد الإلكتروني: example@email.com</p>
+    <p>رقم الهاتف: 776273750</p>
+    <p><a href="https://wa.me/776273750">واتساب</a></p>
+</section>
+
+<script>
+    function showGradeOptions() {
+        document.getElementById('gradeForm').classList.toggle('hidden');
+        document.getElementById('gradesTable').classList.add('hidden');
+    }
+
+    function showSearchGrades() {
+        document.getElementById('gradesTable').classList.toggle('hidden');
+        document.getElementById('gradeForm').classList.add('hidden');
+    }
+
+    function downloadPDF() {
+        alert('تم حفظ الملف بصيغة PDF!');
+    }
+</script>
+
+</body>
+</html>
